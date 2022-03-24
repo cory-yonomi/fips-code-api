@@ -1,7 +1,9 @@
 {
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^16.0.0",
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "liquid-express-views": "^1.0.8"
   },
   "scripts": {
     "start": "node server.js"
@@ -10,7 +12,6 @@
   "version": "0.0.1",
   "description": "A simple API for retrieving US FIPS codes by state and county name",
   "main": "server.js",
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ornery-mouse/fips-code-api.git"
