@@ -16,7 +16,7 @@ This API expects GET requests with one to three query parameters.
 
 ### api/all
 
-//fips-county-api.herokuapp.com/api/all?_countyName=Travis&state=TX will provide the following response object:
+//fips-county-api.herokuapp.com/api/states/TX?_countyName=Travis will provide the following response object:
 
     {
         "state": "Texas",

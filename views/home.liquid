@@ -1,0 +1,35 @@
+{% layout 'layout.liquid' %}
+
+{% block content %}
+    <div class="welcome">
+        <h4>Welcome to my super passion project!</h4>
+        <h5>I'm super kidding...</h5>
+        <p>This little project was born out of a desire to practice building RESTful APIs and a personal need for another project to have easier access to these codes.</p>
+        <p>Hopefully it's useful to at least a few folks.</p>
+    </div>
+    <div>
+        <div class="endpoint">
+            <p>The API expects a GET request to one of a few routes:</p>
+            <h4>api/index</h4>
+            <p>Provides a full data set. Every county and code, grouped by state.</p>
+        </div>
+        <div class="endpoint">
+            <h4>api/states/:state?countyName={optional}</h4>
+            <p>This endpoint provides either every county and it's code for the provided state (without a query), or a specific county name provided by the {countyName} query.</p>
+            <p><code>//fips-code-api.herokuapp.com/api/state/TX?countyName=Travis</code> : </p>
+            <pre><code>        {
+                    "state": "Texas",
+                    "countyName": "Travis",
+                    "countyCode": "48453"
+        }</code></pre>
+        </div>
+        <div class="endpoint">
+            <h4>api/fips/:fipsCode</h4>
+            <p>This endpoint provides a county and it's state using it's FIPS code.</p>
+            <p><code>//fips-code-api.herokuapp.com/api/fips/48453</code> : </p>
+            <pre><code>        {
+            "countyCode": "48453"
+        }</code></pre>
+        </div>
+    </div>
+{% endblock %}
