@@ -52,15 +52,16 @@ router.get('/fips/many', (req, res) => {
 		})
 })
 
-router.get('/fips/:fipsCode', (req, res) => {
+router.get('/fips', (req, res) => {
 	// extract the state code from the county's FIPS code
-	let stateCode = req.params.fipsCode.toString().slice(0, 2)
+	let stateCode = req.query.code.toString().slice(0, 2)
 	// use it to find the single state
+	console.log('state code:', stateCode)
 	State.findOne({ stateFips: stateCode })
 		.then(foundState => {
 			// filter for the county with the matching name
 			let foundCounty = foundState.counties.filter(county => {
-				return county.fips === parseInt(req.params.fipsCode)
+				return county.fips === parseInt(req.query.code)
 			})
 			res.json(foundCounty)
 		})

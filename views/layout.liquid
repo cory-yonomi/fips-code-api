@@ -9,9 +9,11 @@
 	<link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-	<h1>FIPS County Code API</h1>
-	{% block content %}
-	
-	{% endblock %}
+	<div class="main">
+		{% render 'header.liquid' %}
+		{% block content %}
+		
+		{% endblock %}
+	</div>
 </body>
 </html>
