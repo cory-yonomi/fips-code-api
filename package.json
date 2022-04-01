@@ -5,7 +5,7 @@
     "express": "^4.17.3",
     "liquid-express-views": "^1.0.8",
     "markdown-it": "^12.3.2",
-    "mongoose": "^6.2.8"
+    "mongoose": "^6.2.9"
   },
   "scripts": {
     "start": "node server.js"
