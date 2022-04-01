@@ -8,7 +8,7 @@ const stateSchema = new mongoose.Schema(
             required: true
         },
         stateFips: {
-            type: Number,
+            type: String,
             required: true
         },
         abbrev: {

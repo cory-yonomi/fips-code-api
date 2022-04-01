@@ -7,7 +7,7 @@ const countySchema = new mongoose.Schema(
             required: true
         },
         fips: {
-            type: Number,
+            type: String,
             required: true
         }
     }

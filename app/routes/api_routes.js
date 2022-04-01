@@ -30,27 +30,27 @@ router.get('/state/:state', (req, res) => {
 	}
 })
 
-router.get('/fips/many', (req, res) => {
-	let queries = req.query.countyCodes.split(',')
-	let statesArray = []
-	let fipsArray = []
+// router.get('/fips/many', (req, res) => {
+// 	let queries = req.query.countyCodes.split(',')
+// 	let statesArray = []
+// 	let fipsArray = []
 
-	queries.forEach(query => {
-		let stateCode = query.slice(0, 2)
-		statesArray.push(parseInt(stateCode))
-		fipsArray.push(parseInt(query))
-	})
+// 	queries.forEach(query => {
+// 		let stateCode = query.slice(0, 2)
+// 		statesArray.push(parseInt(stateCode))
+// 		fipsArray.push(parseInt(query))
+// 	})
 
-	State.find({ stateFips: statesArray })
-		.then(states => {
-			console.log(states)
-			let codes = []
-			states.forEach((state, i) => {
-				codes.push(state.counties.find(county => parseInt(county.fips) === parseInt(fipsArray[i])))
-			})
-			res.json(codes)
-		})
-})
+// 	State.find({ stateFips: statesArray })
+// 		.then(states => {
+// 			console.log(states)
+// 			let codes = []
+// 			states.forEach((state, i) => {
+// 				codes.push(state.counties.find(county => parseInt(county.fips) === parseInt(fipsArray[i])))
+// 			})
+// 			res.json(codes)
+// 		})
+// })
 
 router.get('/fips', (req, res) => {
 	// extract the state code from the county's FIPS code
