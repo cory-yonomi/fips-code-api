@@ -1,8 +1,5 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const cors = require('cors')
-
-
 
 require('dotenv').config()
 
@@ -28,11 +25,7 @@ app.use(express.urlencoded({ extended: false})); // parse urlencoded request bod
 app.use(express.static("public"))
 // set CORS headers on response from this API using the `cors` NPM package
 // `CLIENT_ORIGIN` is an environment variable that will be set on Heroku
-app.use(
-	cors({
-		origin: process.env.CLIENT_ORIGIN || `http://localhost:${clientDevPort}`,
-	})
-)
+
 
 // define port for API to run on
 // adding PORT= to your env file will be necessary for deployment
