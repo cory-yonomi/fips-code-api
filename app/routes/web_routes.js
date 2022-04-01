@@ -17,6 +17,7 @@ router.get('/search', (req, res) => {
         State.findOne({ abbrev: req.query.state.toUpperCase() })
             .then(foundState => {
                 const foundCounty = foundState.counties.filter(county => county.county.includes(req.query.countyName))
+                console.log(foundCounty)
 				res.render('search', {state: foundState, county: foundCounty})
 			})
 			.catch(err => console.log(err))
