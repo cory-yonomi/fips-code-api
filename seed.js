@@ -13,6 +13,7 @@ mongoose.connect(db, {
 
 mongoose.connection
 	.on("open", () => {
+		console.log(`Connected to ${db}`)
 	const seedStates = []
 
 	states.forEach(state => {
@@ -43,7 +44,7 @@ mongoose.connection
             State.create(seedStates)
             .then((newStates) => {
                 // log the new States to confirm their creation
-                console.log(seedStates);
+                console.log("States created");
                 mongoose.connection.close();
             })
             .catch((error) => {
