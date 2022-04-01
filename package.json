@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/ornery-mouse/fips-code-api/issues"
   },
-  "homepage": "https://github.com/ornery-mouse/fips-code-api#readme"
+  "homepage": "https://github.com/ornery-mouse/fips-code-api#readme",
+  "engines": {
+    "node": "16.x"
+  }
 }
