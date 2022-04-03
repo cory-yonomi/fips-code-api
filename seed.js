@@ -27,9 +27,10 @@ mongoose.connection
 		counties.forEach(county => {
 			const newCounty = {}
 			newCounty.name = county[0]
-			newCounty.state = { abbrev: state._abbrev, name: state._name }
-			newCounty.stateFips = state._fips
 			newCounty.fips = county[1]
+			newCounty.state = state._name
+			newCounty.stateFips = state._fips
+			newCounty.abbrev = state._abbrev
 			seedCounties.push(newCounty)
 		})
 		

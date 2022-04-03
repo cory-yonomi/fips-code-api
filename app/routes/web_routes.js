@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const State = require('../../models/state')
+const County = require('../../models/county')
 
 router.get('/', (req, res) => {
     res.redirect('/docs')
