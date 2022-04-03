@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const countySchema = require('./county')
+
 
 const stateSchema = new mongoose.Schema(
     {
@@ -7,16 +7,11 @@ const stateSchema = new mongoose.Schema(
             type: String,
             required: true
         },
-        stateFips: {
-            type: String,
-            required: true
-        },
         abbrev: {
             type: String,
             required: true
-        },
-        counties: [countySchema]
+        }
     }
 )
 
-module.exports = mongoose.model('State', stateSchema)
+module.exports = stateSchema

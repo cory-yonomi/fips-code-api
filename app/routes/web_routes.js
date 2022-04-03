@@ -14,11 +14,11 @@ router.get('/search', (req, res) => {
     if (!req.query.countyName || !req.query.state) {
         res.render('search')
     } else {
-        State.findOne({ abbrev: req.query.state.toUpperCase() })
-            .then(foundState => {
-                const foundCounty = foundState.counties.filter(county => county.county.includes(req.query.countyName))
+        County.findOne({ abbrev: req.query.state.toUpperCase(), name: { $in: [req.query.countyName]} })
+            .then(foundCounty => {
+                // const foundCounty = foundState.counties.filter(county => county.county.includes(req.query.countyName))
                 console.log(foundCounty)
-				res.render('search', {state: foundState, county: foundCounty})
+				res.send(foundCounty)
 			})
 			.catch(err => console.log(err))
     }

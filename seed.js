@@ -2,7 +2,8 @@ const fips = require('./lib/fips_lookup_by_state')
 const mongoose = require('mongoose')
 const states = Object.values(fips)
 
-const State = require('./models/state')
+// const State = require('./models/state')
+const County = require('./models/county')
 
 const db = require('./config/connection')
 
@@ -14,37 +15,34 @@ mongoose.connect(db, {
 mongoose.connection
 	.on("open", () => {
 		console.log(`Connected to ${db}`)
-	const seedStates = []
+	const seedCounties = []
 
 	states.forEach(state => {
-		const newState = {}
-
-		newState.name = state._name
-		newState.stateFips = state._fips
-		newState.abbrev = state._abbrev
-		newState.counties = []
-
+		
 		// turn the object's attributes into arrays
 		let counties = Object.entries(state)
 		// remove the first three array items because they're state info
 		counties.splice(0, 3)
 		//turn each of the remaining arrays into a county object inside the new state's counties array
 		counties.forEach(county => {
-			newState.counties.push({
-				county: county[0],
-				fips: county[1]
-			})	
+			const newCounty = {}
+			newCounty.name = county[0]
+			newCounty.state = { abbrev: state._abbrev, name: state._name }
+			newCounty.stateFips = state._fips
+			newCounty.fips = county[1]
+			seedCounties.push(newCounty)
 		})
-		seedStates.push(newState)
+		
 	})
+		
 	console.log('before deleteMany')
-	State.deleteMany({})
-        .then((deletedStates) => {
-        // Seed Starter States
-            State.create(seedStates)
-            .then((newStates) => {
+	County.deleteMany({})
+        .then((deletedCounties) => {
+        // Seed Counties
+            County.create(seedCounties)
+            .then((newCounties) => {
                 // log the new States to confirm their creation
-                console.log("States created");
+                console.log("Countiescreated");
                 mongoose.connection.close();
             })
             .catch((error) => {
