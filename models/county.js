@@ -23,6 +23,15 @@ const countySchema = new mongoose.Schema(
             type: String,
             required: true
         }
+    },
+    {
+        toObject: {
+            transform: (_doc, county) => {
+                delete county._id
+                delete county.__v
+                return county
+            }
+        }
     }
 )
 
