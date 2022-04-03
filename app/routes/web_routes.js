@@ -18,7 +18,7 @@ router.get('/search', (req, res) => {
             .then(foundCounty => {
                 // const foundCounty = foundState.counties.filter(county => county.county.includes(req.query.countyName))
                 console.log(foundCounty)
-                res.render('search', { county: foundCounty.toObject() })
+                !foundCounty ? res.render('search', {county: {name: 'No results found'}} ) : res.render('search', { county: foundCounty.toObject() })
 			})
 			.catch(err => console.log(err))
     }

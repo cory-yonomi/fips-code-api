@@ -26,8 +26,10 @@ const countySchema = new mongoose.Schema(
     },
     {
         toObject: {
+            virtuals: true,
             transform: (_doc, county) => {
                 delete county._id
+                delete county.id
                 delete county.__v
                 return county
             }
