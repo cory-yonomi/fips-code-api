@@ -13,44 +13,22 @@
             <p>Provides a full data set. Every county and code, grouped by state.</p>
             <p><code>//fips-code-api.herokuapp.com/api/index</code> <a href="http://fips-code-api.herokuapp/api/index">Response</a> </p>
 
-            <h5>api/states/:state?countyName={optional}</h5>
-            <p>This endpoint provides either every county and it's code for the provided state (without a query), or a specific county name provided by the {countyName} query.</p>
-            <p><code>//fips-code-api.herokuapp.com/api/state/TX?countyName=Travis</code> <a href="http://fips-code-api.herokuapp/api/state/TX?countyName=Travis">Response</a> </p>
+            <h5>api/search?state=StateAbbreviation&countyName=CountyName</h5>
+            <p>This endpoint provides a specific county name provided by the {countyName} query.</p>
+            <p><code>//fips-code-api.herokuapp.com/api/state/TX?countyName=Travis</code> <a href="http://fips-code-api.herokuapp/api/search?state=TX&countyName=Travis">Response</a> </p>
 
-            <h5>api/fips?code={CODE}</h4>
-            <p>This endpoint provides a state and county name when provided a 5-digit FIPS code.</p>
-            <p><code>//fips-code-api.herokuapp.com/api/fips?code=48453</code> <a href="http://fips-code-api.herokuapp/api/fips?code=48453">Response</a> </p>
-
-            <h5>JSON Response Formats:</h5>
-             <div class="responseDisplay">       
-<pre><code>Index:
-    
-[
-    {
-        "name": "Alabama",
-        "stateFips": "01",
-        "abbrev": "AL",
-        "counties": [
-            {
-                "county": "Autauga County",
-                "fips": "01001"
-            },
-            {
-                "county": "Bibb County",
-                "fips": "01007"
-            },
-            ...
-    },
-    ...
-]</code></pre>
-            </div>
+            <h5>JSON Response Format:</h5>
+             
             <div class="responseDisplay">       
 <pre><code>Query by state and county name:
     
 [
     {
-      "county": "Travis",
-      "fips": "48453"
+        "name": "Travis County",
+        "fips": "48453",
+        "stateFips": "48",
+        "state": "Texas",
+        "abbrev": "TX"
     }
 ]</code></pre>
             </div>
