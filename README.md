@@ -5,55 +5,36 @@ United States counties and their Federal Information Processing Standards codes
 This API was launched to provide an easier option for accessing a desired FIPS code. There are some government resources, a very long list and the Census Bureau API. The format of the data from both those sources isn't conducive to a number of web app functions. The data and scripts that initialized this APIs core data were based on work by [Derek Swingley](https://derekswingley.com) and his article [Using the Census API to Get County FIPS Codes](https://derekswingley.com/2019/10/13/using-the-census-api-to-get-county-fips-codes/). I'm taking it a step further, mostly because I'm practicing development skills, but also because there has to be at least one other person needing an easier time accessing these codes.
 
 # Docs
-This API expects GET requests with one to three query parameters.
-
-## Available Parameters
-    - countyName: A string of the name of the county
-    - state: A string of the two letter state abbreviation
-    - countyCode: A string of the county's 6 digit FIPS code
+This API takes only GET requests.
 
 ## Request Endpoints
 
-### api/all
+### api/index
 
-//fips-county-api.herokuapp.com/api/states/TX?_countyName=Travis will provide the following response object:
+`https://fips-code-api.herokuapp.com/api/index`
 
-    {
-        "state": "Texas",
-        "countyName": "Travis",
-        "countyCode": "48453"
-    }
+Provides a complete data set: every county and code, grouped by state.
 
+### api/search
 
-//fips-county-api.herokuapp.com/api/all?_countyCode=48453 will provide the following response object:
+`https://fips-code-api.herokuapp.com/api/search?state=StateAbbreviation&countyName=CountyName`
 
-    {
-        "state": "Texas",
-        "countyName": "Travis",
-        "countyCode": "48453"
-    }
+Provides a county's information.
 
-Multiple county codes can be supplied, separated by commas and no spaces.
+```
+{
+    "name": "Travis County",
+    "fips": "48453",
+    "stateFips": "48",
+    "state": "Texas",
+    "abbrev": "TX"
+}
+```
 
-//fips-county-api.herokuapp.com/api/all?_countyCode=48453,13259 will provide the following response:
+## Bugs/Issues
 
-    [
-        {
-            "state": "Texas",
-            "countyName": "Travis County",
-            "countyCode": "48453"
-        },
-        {
-            "state": "Georgia",
-            "countyName": "Stewart County",
-            "countyCode": "48453"
-        }
-    ]
+Please use the issues portion of this repo. This is a hobby API and meant to be relatively shallow in terms of functionality.
+There will, however, be a few more features implemented in the near future. Mostly other routes for more specific searches or by
+different parameters. Some more styling and deeper search features on the webpage as well.
 
-### api/code
-
-//fips-county-api.herokuapp.com/api/code?_countyName=Travis&state=TX will provide the following response object:
-
-    {
-        "countyCode": "48453"
-    }
+Collaborators are welcome!
